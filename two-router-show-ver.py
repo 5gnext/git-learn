@@ -5,7 +5,7 @@ ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 #ssh_client.connect(hostname='10.1.1.1', port='22', username='admin', password='admin', look_for_keys=False, allow_agent=False)
 router1 = {'hostname': '10.1.1.1', 'port': '22', 'username': 'admin', 'password': 'admin'}
 router2 = {'hostname': '10.1.1.3', 'port': '22', 'username': 'admin', 'password': 'admin'}
-routers = [router1,router2]
+routers = [router1, router2]
 for router in routers:
     print(f'connecting to {router.get("hostname")}')
     ssh_client.connect(**router, look_for_keys=False, allow_agent=False)
