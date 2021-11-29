@@ -32,7 +32,7 @@ def backup(router):
     time.sleep(15)
     output = show(shell)
     output_list = output.splitlines()
-    output_list = output_list[18:-1]
+    output_list = output_list[6:-1]
     output = '\n'.join(output_list)
     from datetime import datetime
     now = datetime.now()
