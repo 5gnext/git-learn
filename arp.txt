@@ -1,0 +1,14 @@
+[
+    {
+        "interface": "FastEthernet0/0",
+        "mac": "02:00:4C:4F:4F:50",
+        "ip": "10.1.1.2",
+        "age": 19.0
+    },
+    {
+        "interface": "FastEthernet0/0",
+        "mac": "CC:01:11:12:00:00",
+        "ip": "10.1.1.1",
+        "age": -1.0
+    }
+]
