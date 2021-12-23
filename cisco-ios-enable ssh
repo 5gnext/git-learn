@@ -1,0 +1,2 @@
+config# crypto key gen rsa
+1024
