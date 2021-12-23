@@ -1,0 +1,23 @@
+
+import os.path
+# "c:/sourcedir"
+#data_folder = os.path.join("c:", "\\", "Users", "Eric Lai")
+#os.path.join("c:/", "Users", "Eric Lai")
+#data_folder = os.path.join("C:", Users", "Eric Lai")
+
+file_to_open = os.path.join("C:", "\\", "Users", "Eric Lai", "abc.txt")
+
+f = open(file_to_open)
+
+print(f.read())
+
+# ###new
+from pathlib import Path
+#
+data_folder = Path("C:/Users/Eric Lai")
+#
+file_to_open = data_folder / "abc.txt"
+#
+f = open(file_to_open)
+#
+print(f.read())
