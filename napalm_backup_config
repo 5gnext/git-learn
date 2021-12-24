@@ -1,0 +1,39 @@
+#!/usr/bin/python
+
+import napalm, re, datetime, os, pdb
+
+path = os.getcwd()
+#pdb.set_trace()
+try:
+    os.stat(path+'/backup_config')
+except:
+    os.mkdir(path+'/backup_config')
+
+driver = napalm.get_network_driver('ios')
+
+### device list to backup configuration
+device_list = ['10.1.1.1']
+
+### username and password
+user = 'admin'
+passwd = 'admin'
+
+for ip in device_list:
+
+    device = driver(hostname=ip, username=user, password=passwd)
+    device.open()
+    config = device.get_config(retrieve='running')
+    facts = device.get_facts()
+
+    run_config = config['running']
+    #erase lines with "Building configuration", "Current Configuration" and "end"
+    run_config = re.sub(r'Building configuration.*|Current configuration.*|end','', run_config)
+
+    date = datetime.datetime.now().strftime('%Y-%m-%d_%H_%M_%S')
+    hostname = facts['hostname']
+
+    ### create file with running config in backup_config folder
+    file = open(path+'\\backup_config\\'+hostname+'_'+date+'_'+'running-config','w')
+    file.write(run_config)
+    file.close()
+    device.close()
